@@ -1,0 +1,356 @@
+# Environment 
+exec --no-startup-id xrandr --output XWAYLAND0 --primary
+exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id session.sh --with-cleanup
+
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $mod Mod4
+set $mod1 Mod1
+set $mod2 Control
+set $term kitty2
+set $uifont "JetBrains Mono Nerd Font Medium 13"
+set $highlight #c574dd
+set $prompt #56b6c2
+set $menu bemenu-run --fn 'JetBrainsMono Nerd Font Bold 12' -p 'Run:' --tf '#56b6c2' --hf '#1a1b26' --sf '#1a1b26' --scf '#c574dd' --nb '#1a1b26' --sb '#1a1b26' --tb '#1a1b26' --fb '#1a1b26' --hb '#c574dd' --nf '#a9b1d6' -H 32
+seat * hide_cursor 8000
+
+# borders
+default_border pixel 5
+default_floating_border pixel 6
+
+hide_edge_borders none
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod1+n border normal
+
+#font
+font pango:xft:JetBrains Mono 18
+
+# gaps
+gaps inner 16
+gaps outer 1
+
+# Floating modifier
+floating_modifier $mod
+
+# Terminals
+bindsym $mod+Return exec --no-startup-id  foot
+bindsym $mod1+Return exec --no-startup-id  kitty2
+
+# window kill command
+bindsym $mod++q kill
+
+# launchers
+bindsym $mod2+space exec --no-startup-id  rofi -show drun
+bindsym $mod1+backspace exec --no-startup-id  rofi -show p -modi p:rofi-power-menu -width 20 -lines 6
+bindsym $mod1+space exec --no-startup-id  $menu
+
+# change focus
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+#bindsym $mod+b workspace back_and_forth
+
+# split orientation
+bindsym $mod+shift+b split h;exec --no-startup-id  notify-send 'tile horizontally'
+bindsym $mod+v split v;exec --no-startup-id  notify-send 'tile vertically'
+
+# toggle fullscreen mode for the focused container
+bindsym $mod2+mod1+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+# bindsym $mod+Shift+s sticky toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod1+shift+p move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod1+p scratchpad show
+bindsym $mod1+shift+o [app_id="obs"] scratchpad show; move position center;
+bindsym $mod1+shift+t [app_id="spad"] scratchpad show; move position center;
+bindsym $mod1+shift+s [title="Skype"] scratchpad show; move position center;
+bindsym $mod1+shift+f [app_id="thunar"] scratchpad show; move position center;
+bindsym $mod1+shift+m [app_id="gnome-system-monitor"] scratchpad show; move position center;
+bindsym $mod1+shift+d [app_id="gnome-disks"] scratchpad show; move position center;
+bindsym $mod1+shift+v [title="nvim"] scratchpad show; move position center;
+bindsym $mod1+shift+h [title="htop"] scratchpad show; move position center;
+
+# workspaces
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+p move workspace to output right
+
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Open specific applications in floating mode
+
+for_window [title="Color Picker"] floating enable
+for_window [title="Picture-in-Picture"] floating enable; move position center;
+for_window [title="Disks"] floating enable; move position center;
+for_window [title="About Mozilla Firefox"] floating enable
+for_window [title="GNU Image Manipulation Program"] floating enable
+for_window [class="GParted"] floating enable border normal
+for_window [instance="gimp-2.10"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [instance="lxappearance"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [app_id="pavucontrol"] floating enable
+for_window [class="feh"] floating enable border pixel 2
+for_window [class="Gimp-2.10"] floating enable border normal
+for_window [app_id="mpv"] floating enable, resize set width 1200 height 800
+for_window [title="scratchpad"] {
+    move to scratchpad
+    floating enable
+    resize set width 1900 height 1100 
+    scratchpad show 
+}
+for_window [app_id="spad"] {
+    move to scratchpad
+    floating enable
+    resize set width 1900 height 1100 
+    scratchpad show 
+}
+for_window [title="htop"] {
+    move to scratchpad
+    floating enable
+    resize set width 1900 height 1100 
+    scratchpad show 
+}
+for_window [app_id="thunar"] {
+    move to scratchpad
+    floating enable
+    resize set width 1900 height 1100 
+    scratchpad show 
+}
+for_window [app_id="gnome-system-monitor"] {
+    move to scratchpad
+    floating enable
+    resize set width 1900 height 1100 
+    scratchpad show 
+}
+for_window [app_id="gnome-disks"] {
+    move to scratchpad
+    floating enable
+    resize set width 1600 height 900 
+    scratchpad show 
+}
+for_window [app_id="obs"] {
+    move to scratchpad
+    floating enable
+    resize set width 1800 height 1800
+    scratchpad show
+}
+for_window [title="nvim"] {
+    move to scratchpad
+    floating enable
+    resize set width 1800 height 1800
+    scratchpad show
+}
+for_window [app_id="obs"] {
+    move to scratchpad
+    floating enable
+    resize set width 1800 height 1800
+    scratchpad show
+}
+for_window [title="Skype"] {
+    move to scratchpad
+    floating enable
+    resize set width 1700 height 1600 
+    scratchpad show 
+}
+for_window [app_id="Telegram"] {
+    move to scratchpad
+    floating enable
+    resize set width 1700 height 1600 
+    scratchpad show 
+}
+
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Set shut down, restart and locking features
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+mode "$mode_system" {
+    bindsym l exec --no-startup-id  $lock, mode "default"
+    bindsym e exit
+    bindsym s exec --no-startup-id  systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id  systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
+    bindsym Shift+r exec --no-startup-id  systemctl reboot --firmware-setup, mode "default"
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+shift+q mode "$mode_system"
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym j resize shrink width 1 px or 1 ppt
+    bindsym k resize grow height 1 px or 1 ppt
+    bindsym l resize shrink height 1 px or 1 ppt
+    bindsym semicolon resize grow width 1 px or 1 ppt
+
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 1 px or 1 ppt
+    bindsym Down resize grow height 1 px or 1 ppt
+    bindsym Up resize shrink height 1 px or 1 ppt
+    bindsym Right resize grow width 1 px or 1 ppt
+
+# exit resize mode: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+ # class                 border  backgr. text    indicator child_border
+client.focused          #c574dd #222436 #a9b8e8 #c574dd   #c574dd
+client.focused_inactive #252734 #252734 #a9b8e8 #252734   #252734
+client.unfocused        #252734 #252734 #888888 #252734   #252734
+client.urgent           #2f343a #900000 #a9b8e8 #900000   #900000
+client.placeholder      #000000 #0c0c0c #a9b8e8 #000000   #0c0c0c
+client.background       #1a1b26
+
+# hotkeys for some program
+bindsym $mod+Shift+s exec --no-startup-id  gshot
+bindsym Shift+print exec --no-startup-id  'grim - | swappy -f -'
+bindsym $mod1+s exec --no-startup-id  skypeforlinux
+bindsym $mod1+g exec --no-startup-id  gthumb
+bindsym $mod1+d exec --no-startup-id  gnome-disks
+bindsym $mod1+b exec --no-startup-id  ffox
+bindsym $mod1+f exec --no-startup-id  thunar
+bindsym $mod1+o exec --no-startup-id  obs
+bindsym $mod1+m exec --no-startup-id  gnome-system-monitor
+bindsym $mod1+e exec --no-startup-id  emacsclient -c -a 'emacs'
+bindsym $mod1+v exec --no-startup-id  foot -T nvim lvim
+bindsym $mod1+t exec --no-startup-id  foot -a spad
+bindsym $mod1+h exec --no-startup-id  foot -T htop htop
+bindsym $mod+t exec --no-startup-id  alacritty --config-file=$HOME/.config/alacritty/sway.yml --class spad
+
+# auto-start applications
+exec --no-startup-id ~/.config/sway-borders/modules/i3-master-layout.py
+exec_always --no-startup-id bash $HOME/.config/sway-borders/waybar.sh
+
+# volume button
+bindsym XF86AudioRaiseVolume exec --no-startup-id  pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id  pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# multimedia keys
+bindsym XF86AudioPlay exec --no-startup-id  playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id  playerctl next
+bindsym XF86AudioPrev exec --no-startup-id  playerctl previous
+
+input type:keyboard {
+     xkb_layout es
+}
+
+# gtk themes
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema text-scaling-factor 1.25
+    gsettings set $gnome-schema gtk-theme 'TokyoNight'
+    gsettings set $gnome-schema icon-theme 'Tela-blue-dark'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Ubuntu 11'
+}
+seat seat0 xcursor_theme Adwaita 
+
+border_images.focused /home/roidm/.config/sway-borders/borders/shadows.png
+border_images.focused_inactive /home/roidm/.config/sway-borders/borders/shadows.png
+border_images.unfocused /home/roidm/.config/sway-borders/borders/shadows.png
+border_images.urgent /home/roidm/.config/sway-borders/borders/shadows.png
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
