@@ -1,6 +1,4 @@
-# My dwm / slstatus / st build / dwmblocks
+# My Sway borders config
 
-![1](https://gitlab.com/roidm/suckless/-/raw/main/pics/202109031540562.jpg "Image 1")
-
-![2](https://gitlab.com/roidm/suckless/-/raw/main/pics/20210903154056.jpg "Image 2")
+![1](https://raw.githubusercontent.com/roidm/sway-borders/main/pics/swappy-20220429_114108.png "Image 1")
 
