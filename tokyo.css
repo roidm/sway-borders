@@ -6,11 +6,7 @@
 }
 
 window#waybar {
-  /* background-color: rgba(18, 21, 29, 0.98); */
   background-color: #1a1b26;
-  /* background-color: rgba(0, 0, 0, 0); */
-  /*border-bottom: 3px solid #1e222a;*/
-  /*color: #abb2bf;*/
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -48,7 +44,6 @@ window#waybar.hidden {
   background-color: #252734;
   padding: 0 12px;
   margin: 4px 4px 4px 4px;
-  /*border: 3px solid rgba(0, 0, 0, 0);*/
   border-radius: 90px;
   background-clip: padding-box;
 }
@@ -58,13 +53,6 @@ window#waybar.hidden {
   min-width: 20px;
   color: #7aa2f7;
 }
-
-
-
-/*#disk {
-  padding: 0 10px;
-  margin: 2px 4px;
-}*/
 
 #custom-network {
   color: #e06c75;
@@ -128,6 +116,7 @@ window#waybar.hidden {
 #custom-fans {
   color: #e06c75;
 }
+
 
 #clock {
   color: #7aa2f7;

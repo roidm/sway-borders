@@ -2,9 +2,9 @@
 # Terminate already running bar instances
 killall -q "waybar"
 killall -q "wbg"
-killall "polkit-gnome-authentication-agent-1"
-killall "network-trafic.sh"
-killall "dunst"
+killall -q "polkit-gnome-authentication-agent-1"
+killall -q "network-trafic.sh"
+killall -q "dunst"
 
 # Wait until the processes have been shut down
 while pgrep -x waybar >/dev/null; do sleep 1; done
