@@ -41,105 +41,22 @@ window#waybar.hidden {
 #memory,
 #disk,
 #tray {
-  background: linear-gradient(90deg, rgba(34,35,53,1) 15%, rgba(37,39,52,1) 90%);
+  background-color: #252734;
   padding: 0 12px;
   margin: 4px 4px 4px 4px;
   border-radius: 90px;
   background-clip: padding-box;
 }
 
-#custom-rofi {
-	color: #c678dd;
-	background-color: #252734;
-}
-
 #workspaces button {
   padding: 0 5px;
-  min-width: 25px;
+  min-width: 20px;
   color: #7aa2f7;
-  background-clip: padding-box;
-  border-radius: 200px;
-  background: linear-gradient(190deg, rgba(34,35,53,1) 15%, rgba(37,39,52,1) 90%);
-}
-
-#workspaces button:hover {
-  background-color: rgba(0, 0, 0, 0.2)
-}
-
-#workspaces button.focused {
-  color: #c678dd;
-}
-
-#workspaces button.urgent {
-  color: #e06c75;
-}
-
-#cpu {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(209,154,102,1) 0%, rgba(186,155,152,1) 55%);
-}
-
-#disk {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(186,155,152,1) 5%, rgba(79,143,207,1) 90%);
-}
-
-#custom-memory {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(81,142,207,1) 15%, rgba(122,162,247,1) 100%);
-}
-
-#window {
-  color: #d19a66;
-}
-
-#clock {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(122,162,247,1) 0%, rgba(198,120,221,1) 100%);
 }
 
 #custom-network {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(146,104,216,1) 15%, rgba(167,93,188,1) 90%);
-}
-
-#custom-uptime {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(167,93,188,1) 35%, rgba(174,89,180,1) 95%);
-}
-
-#temperature {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(174,89,180,1) 45%, rgba(195,79,152,1) 90%);
-}
-
-#temperature.critical {
-  background-color: #e06c75;
-  color: #1e222a;
-}
-
-#custom-weather {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(182,87,171,1) 5%, rgba(108,118,216,1) 100%);
- }
-
-#custom-kernel {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(108,118,216,1) 25%, rgba(116,116,216,1) 90%);
-}
-
-#pulseaudio {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(116,116,216,1) 35%, rgba(124,111,216,1) 70%);
-}
-
-#pulseaudio.muted {
   color: #e06c75;
-}
-
-#custom-power {
-  color: #1a1b26;
-  background: linear-gradient(90deg, rgba(124,111,216,1) 20%,rgba(122,162,247,1) 100%);
+  background-color: #1a1b26
 }
 
 #custom-dunst {
@@ -155,8 +72,44 @@ window#waybar.hidden {
   color: #000000;
 }
 
+#workspaces button:hover {
+  background-color: rgba(0, 0, 0, 0.2)
+}
+
+#workspaces button.focused {
+  color: #c678dd;
+}
+
+#workspaces button.urgent {
+  color: #e06c75;
+}
+
+#cpu {
+  color: #d19a66;
+}
+
+#disk {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(234,161,128,1) 10%, rgba(122,162,247,1) 90%);
+}
+
+#custom-memory {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(122,162,247,1) 10%, rgba(134,108,215,1) 100%);
+}
+
 #memory {
   color: #c678dd;
+}
+
+#temperature {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(81,142,207,1) 15%, rgba(122,162,247,1) 100%);
+}
+
+#temperature.critical {
+  background-color: #e06c75;
+  color: #1e222a;
 }
 
 #custom-media {
@@ -168,8 +121,28 @@ window#waybar.hidden {
   color: #e06c75;
 }
 
+
+#clock {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(134,108,215,1) 15%, rgba(105,119,216,1) 70%, rgba(122,162,247,1) 100%);
+}
+
+#custom-weather {
+  color: #56b6c2;
+ 
+}
+
 #mode {
   color: #e06c75
+}
+
+#window {
+  color: #9ECE6A;
+  background-color: #1a1b26;
+}
+
+#custom-power {
+  color: #f25287
 }
 
 #idle_inhibitor {
@@ -185,9 +158,34 @@ window#waybar.hidden {
   color: #56b6c2;
 }
 
+#custom-uptime {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(134,108,215,1) 25%, rgba(122,162,247,1)  85%);
+}
+
+#pulseaudio {
+  color: #d19a66;
+}
+
+#custom-rofi {
+	color: #c678dd;
+	background-color: #252734;
+}
+
+#pulseaudio.muted {
+  background-color: #e06c75;
+  color: #1e222a;
+}
+
 #backlight {
   color: #7aa2f7;
 }
+
+#custom-kernel {
+  color: #1a1b26;
+  background: linear-gradient(90deg, rgba(122,162,247,1) 0%, rgba(198,120,221,1) 100%);
+}
+
 #battery {
   color: #98c379;
 }
@@ -215,7 +213,8 @@ window#waybar.hidden {
 }
 
 #network {
-    color: #c678dd
+    color: #c678dd;
+    background-color: #1a1b26
 }
 
 #network.disconnected {
