@@ -16,7 +16,10 @@ set $term kitty2
 set $uifont "JetBrains Mono Nerd Font Medium 13"
 set $highlight #c574dd
 set $prompt #56b6c2
+#set $menu  dmenu_run -sb '#c574dd' -nb '#12151d' -shf '#c574dd'
 set $menu bemenu-run --fn 'JetBrainsMono Nerd Font Bold 12' -p 'Run:' --tf '#56b6c2' --hf '#1a1b26' --sf '#1a1b26' --scf '#c574dd' --nb '#1a1b26' --sb '#1a1b26' --tb '#1a1b26' --fb '#1a1b26' --hb '#c574dd' --nf '#a9b1d6' -H 32
+#xwayland disable
+#set $lock swaylock -f -c 000000
 seat * hide_cursor 8000
 
 # borders
@@ -30,11 +33,11 @@ bindsym $mod1+n border normal
 
 #font
 font pango:xft:JetBrains Mono 18
-
+#output DP-1 scale 1.25
 # gaps
+#smart_borders on
 gaps inner 16
 gaps outer 1
-
 # Floating modifier
 floating_modifier $mod
 
@@ -84,12 +87,15 @@ bindsym $mod+v split v;exec --no-startup-id  notify-send 'tile vertically'
 bindsym $mod2+mod1+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # toggle sticky
 # bindsym $mod+Shift+s sticky toggle
@@ -111,6 +117,7 @@ bindsym $mod1+shift+m [app_id="gnome-system-monitor"] scratchpad show; move posi
 bindsym $mod1+shift+d [app_id="gnome-disks"] scratchpad show; move position center;
 bindsym $mod1+shift+v [title="nvim"] scratchpad show; move position center;
 bindsym $mod1+shift+h [title="htop"] scratchpad show; move position center;
+bindsym $mod1+shift+e [app_id="emacs"] scratchpad show; move position center;
 
 # workspaces
 set $ws1 1
@@ -225,6 +232,12 @@ for_window [title="nvim"] {
     resize set width 1800 height 1800
     scratchpad show
 }
+for_window [app_id="emacs"] {
+    move to scratchpad
+    floating enable
+    resize set width 1800 height 1800
+    scratchpad show
+}
 for_window [app_id="obs"] {
     move to scratchpad
     floating enable
@@ -316,6 +329,7 @@ bindsym $mod1+h exec --no-startup-id  foot -T htop htop
 bindsym $mod+t exec --no-startup-id  alacritty --config-file=$HOME/.config/alacritty/sway.yml --class spad
 
 # auto-start applications
+exec --no-startup-id  wl-paste -t text --watch clipman store
 exec --no-startup-id ~/.config/sway-borders/modules/i3-master-layout.py
 exec_always --no-startup-id bash $HOME/.config/sway-borders/waybar.sh
 
@@ -331,7 +345,13 @@ bindsym XF86AudioPrev exec --no-startup-id  playerctl previous
 
 input type:keyboard {
      xkb_layout es
+     xkb_options caps:ctrl_modifier
 }
+#exec --no-startup-id  swayidle -w \
+#    timeout 300 'swaylock -f -c 000000' \
+#    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -f -c 000000'
+
 
 # gtk themes
 set $gnome-schema org.gnome.desktop.interface
@@ -344,11 +364,14 @@ exec_always {
 }
 seat seat0 xcursor_theme Adwaita 
 
-border_images.focused /home/roidm/.config/sway-borders/borders/shadows.png
-border_images.focused_inactive /home/roidm/.config/sway-borders/borders/shadows.png
-border_images.unfocused /home/roidm/.config/sway-borders/borders/shadows.png
-border_images.urgent /home/roidm/.config/sway-borders/borders/shadows.png
+border_images.focused /home/roidm/.config/sway-borders/borders/shadows3.png
+border_images.focused_inactive /home/roidm/.config/sway-borders/borders/shadows2.png
+border_images.unfocused /home/roidm/.config/sway-borders/borders/shadows2.png
+border_images.urgent /home/roidm/.config/sway-borders/borders/shadows2.png
 
+#output * {
+#    color profile "/home/roidm/Documents/icc/U32J59x.icm"
+#}
 # resize window (you can also use the mouse for that)
 bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
 bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
